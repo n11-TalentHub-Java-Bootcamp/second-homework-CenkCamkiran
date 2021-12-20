@@ -5,16 +5,13 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
-import com.secondhomework.cenkcamkiran.Converters.KullaniciConverter;
 import com.secondhomework.cenkcamkiran.Converters.YorumConverter;
-import com.secondhomework.cenkcamkiran.DTO.KullaniciYorumDTO;
 import com.secondhomework.cenkcamkiran.DTO.UrunYorumDTO;
 import com.secondhomework.cenkcamkiran.DTO.YorumDTO;
 import com.secondhomework.cenkcamkiran.entities.Kullanici;
 import com.secondhomework.cenkcamkiran.entities.UrunYorum;
 import com.secondhomework.cenkcamkiran.exception.KullaniciException;
 import com.secondhomework.cenkcamkiran.exception.UrunException;
-import com.secondhomework.cenkcamkiran.exception.YorumException;
 import com.secondhomework.cenkcamkiran.filters.YorumFilter;
 import com.secondhomework.cenkcamkiran.services.KullaniciService;
 import com.secondhomework.cenkcamkiran.services.YorumService;
@@ -87,8 +84,7 @@ public class YorumController implements YorumFilter {
     @PostMapping("")
     public ResponseEntity<Object> SaveNewYorum(@RequestBody YorumDTO yorumDTO) {
 
-        //
-        UrunYorum urunYorum = YorumConverter.INSTANCE.convertYorumDtoToYorum(yorumDTO);
+        UrunYorum urunYorum = YorumConverter.INSTANCE.convertYorumDTOToYorum(yorumDTO);
 
         urunYorum = yorumService.saveYorum(urunYorum);
 

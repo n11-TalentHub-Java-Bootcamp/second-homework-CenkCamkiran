@@ -3,26 +3,18 @@ package com.secondhomework.cenkcamkiran.DTO;
 import java.util.Date;
 
 public class UrunYorumDTO {
-    private Long urunId;
     private String kullaniciAdi;
     private String urunAdi;
+    private Long urunId;
     private String yorum;
     private Date yorumTarihi;
 
-    public UrunYorumDTO(Long urunId, String kullaniciAdi, String urunAdi, String yorum, Date yorumTarihi) {
-        this.urunId = urunId;
+    public UrunYorumDTO(String kullaniciAdi, String urunAdi, Long urunId, String yorum, Date yorumTarihi) {
         this.kullaniciAdi = kullaniciAdi;
         this.urunAdi = urunAdi;
+        this.urunId = urunId;
         this.yorum = yorum;
         this.yorumTarihi = yorumTarihi;
-    }
-
-    public Long getUrunId() {
-        return urunId;
-    }
-
-    public void setUrunId(Long urunId) {
-        this.urunId = urunId;
     }
 
     public String getKullaniciAdi() {
@@ -39,6 +31,14 @@ public class UrunYorumDTO {
 
     public void setUrunAdi(String urunAdi) {
         this.urunAdi = urunAdi;
+    }
+
+    public Long getUrunId() {
+        return urunId;
+    }
+
+    public void setUrunId(Long urunId) {
+        this.urunId = urunId;
     }
 
     public String getYorum() {
