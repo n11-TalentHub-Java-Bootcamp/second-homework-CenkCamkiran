@@ -9,11 +9,13 @@ import com.secondhomework.cenkcamkiran.Converters.YorumConverter;
 import com.secondhomework.cenkcamkiran.DTO.UrunYorumDTO;
 import com.secondhomework.cenkcamkiran.DTO.YorumDTO;
 import com.secondhomework.cenkcamkiran.entities.Kullanici;
+import com.secondhomework.cenkcamkiran.entities.Urun;
 import com.secondhomework.cenkcamkiran.entities.UrunYorum;
 import com.secondhomework.cenkcamkiran.exception.KullaniciException;
 import com.secondhomework.cenkcamkiran.exception.UrunException;
 import com.secondhomework.cenkcamkiran.filters.YorumFilter;
 import com.secondhomework.cenkcamkiran.services.KullaniciService;
+import com.secondhomework.cenkcamkiran.services.UrunService;
 import com.secondhomework.cenkcamkiran.services.YorumService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +38,9 @@ public class YorumController implements YorumFilter {
 
     @Autowired
     private KullaniciService kullaniciService;
+    
+    @Autowired
+    private UrunService urunService;
 
     @GetMapping("/kullaniciAdi/{kullaniciAdi}")
     public List<UrunYorumDTO> GetYorumlarByKullaniciAdi(@PathVariable String kullaniciAdi) {
@@ -60,6 +65,12 @@ public class YorumController implements YorumFilter {
 
     @GetMapping("/urunid/{id}")
     public List<UrunYorumDTO> GetYorumlarByUrunId(@PathVariable Long id) {
+    	
+    	Urun urun = urunService.findById(id);
+    	
+        if (urun == null) {
+            throw new UrunException("İlgili ürün id bulunamamıştır: " + id);
+        }
 
         List<UrunYorum> urunYorum = yorumService.findYorumlarByUrunId(id);
 

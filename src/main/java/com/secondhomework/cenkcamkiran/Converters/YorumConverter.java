@@ -2,14 +2,14 @@ package com.secondhomework.cenkcamkiran.Converters;
 
 import java.util.List;
 
-import com.secondhomework.cenkcamkiran.DTO.UrunYorumDTO;
-import com.secondhomework.cenkcamkiran.DTO.YorumDTO;
-import com.secondhomework.cenkcamkiran.entities.UrunYorum;
-
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
+
+import com.secondhomework.cenkcamkiran.DTO.UrunYorumDTO;
+import com.secondhomework.cenkcamkiran.DTO.YorumDTO;
+import com.secondhomework.cenkcamkiran.entities.UrunYorum;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface YorumConverter {
